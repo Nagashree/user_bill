@@ -1,0 +1,16 @@
+<% provide(:title, 'Profile') %>
+<div><h1>
+<%= @user.email %>
+</h1></div>
+<section>
+        <%= render 'shared/bill_form' %>
+      </section>
+<div>
+    <% if @user.bills.any? %>
+      <h3>Bills (<%= @user.bills.count %>)</h3>
+      <ol>
+        <%= render @bills %>
+      </ol>
+      <%= will_paginate @bills %>
+    <% end %>
+  </div>

@@ -1,0 +1,29 @@
+<li>
+  <span><%= bill.title %></span>
+  <% if current_user?(bill.user) %>
+    <%= link_to "delete", bill,:action=> :destroy,:contoller=>'bills',:method=>:delete,
+                                     :data=> { :confirm=> "You sure?" },
+                                     :title=> bill.title %>
+  <% end %>
+  <span>
+    Posted <%= time_ago_in_words(bill.created_at) %> ago.
+  </span>
+  <% @items = bill.items.all %>
+  <% if bill.items.any? %>
+      <h4>Items (<%= bill.items.count %>)</h4>
+      <ol>
+        <%= render @items %>
+      </ol>
+    <% end %>
+    </h1></div>
+	<section>
+        <%= form_for @item, :url => {:action => :create,:controller=>"items"} do |f| %>
+  <%= render 'shared/error_messages', :object=> f.object %>
+    <%= f.text_field :item_name, :placeholder=> "Item name..." %>
+    <%= f.text_field :amount, :placeholder=> "amount..." %>
+    <%= f.hidden_field :bill_id, :value=>bill.id %>
+  </div>
+  <%= f.submit "add item" %>
+<% end %>
+    </section>
+</li>
