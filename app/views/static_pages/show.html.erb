@@ -1,4 +1,8 @@
 <% provide(:title, 'Profile') %>
+<% flash.each do |key, value| %>
+<%= value %>
+<% end %>
+<%= link_to "home", root_path %>
 <div><h1>
 <%= @user.email %>
 </h1></div>

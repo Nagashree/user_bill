@@ -12,7 +12,7 @@ devise_for :users do
   # The priority is based upon order of creation:
   # first created -> highest priority.
     resources :bills,:only=>[:create,:destroy]
-    resources :items,:only=> :create
+    resources :items,:only=> [:create,:destroy ]
    # resources :items
     resources :static_pages
     root :to => 'static_pages#home'

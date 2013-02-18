@@ -6,11 +6,12 @@ class BillsController < ApplicationController
       flash[:success] = "Bill created"
       redirect_to root_url
     else
-      render 'static_pages/home'
+      render show_path
     end
   end
 
   def destroy
+    @bill = Bill.find(params[:id])
   	@bill.destroy
     redirect_to root_url
   end

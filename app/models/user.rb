@@ -9,4 +9,14 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   has_many :bills, dependent: :destroy
   # attr_accessible :title, :body
+  before_save { |user| user.email = email.downcase }
+    validates :password, :presence=> true, :length=> { :minimum=>8  }
+    validates :password_confirmation, :presence=> true
+    VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+    validates :email, :presence=> true, :format=> { :with=> VALID_EMAIL_REGEX },:uniqueness=> { :case_sensitive=> false }
+#private
+
+   # def create_remember_token
+    #  self.remember_token = SecureRandom.hex
+    #end
 end

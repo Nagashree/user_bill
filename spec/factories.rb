@@ -5,13 +5,13 @@ FactoryGirl.define do
     password_confirmation "foobar12"
   end
 
-  factory :bills do
+  factory :bill do
     sequence(:title) { |n| "bill_#{n}"}
-    bill_date = Date
+    bill_date = 10.days.ago
     user
   end
 
-  factory :items do
+  factory :item do
     sequence(:item_name) { |n| "Item_#{n}"}
     amount =Random.rand(100)
     bill

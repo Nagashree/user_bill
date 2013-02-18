@@ -2,4 +2,7 @@
   <span><%= item.item_name %></span>
   <span><%= item.amount %>
   </span>
+  <%= link_to "delete", item,:action=> :destroy,:contoller=>'items',:method=>:delete,
+                                     :data=> { :confirm=> "You sure?" },
+                                     :title=> item.item_name %>
 </li>
