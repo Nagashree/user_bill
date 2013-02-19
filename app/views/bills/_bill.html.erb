@@ -6,7 +6,7 @@
                                      :title=> bill.title %>
   <% end %>
   <span>
-    Posted <%= time_ago_in_words(bill.created_at) %> ago.
+    Posted <%= bill.bill_date %> ago.
   </span>
   <% @items = bill.items.all %>
   <% if bill.items.any? %>
@@ -19,9 +19,9 @@
 	<section>
         <%= form_for @item, :url => {:action => :create,:controller=>"items"} do |f| %>
   <%= render 'shared/error_messages', :object=> f.object %>
-    <%= f.text_field :item_name, :placeholder=> "Item name..." %>
-    <%= f.text_field :amount, :placeholder=> "amount..." %>
-    <%= f.hidden_field :bill_id, :value=>bill.id %>
+    <%= f.label :item_name %><%= f.text_field :item_name%>
+    <%= f.label :amount %><%= f.text_field :amount %>
+    <%= f.label :bill_id %><%= f.hidden_field :bill_id, :value=>bill.id %>
   </div>
   <%= f.submit "add item" %>
 <% end %>

@@ -4,7 +4,7 @@ describe Bill do
 
   let(:user) { FactoryGirl.create(:user) }
 
-  before { @bill = user.bills.build(:title=> "Lorem ipsum",:bill_date=>0.days.ago) }
+  before { @bill = user.bills.build(:title=> "Lorem ipsum",:bill_date=>Time.zone.today) }
 
   subject { @bill }
 
@@ -37,7 +37,7 @@ describe Bill do
       		bill_with_same_title.title = @bill.title.upcase
       		bill_with_same_title.save
     	end
-  		it { should_not be_valid }
+  		it { should be_valid }
    end
     describe "items associations" do
 

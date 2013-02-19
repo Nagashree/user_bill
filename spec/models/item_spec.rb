@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Item do
 	before do
    @user = User.new(:email=> "user@example.com",:password=> "password", :password_confirmation=> "password")
-  @bill = Bill.new(:title=> "Lorem ipsum",:bill_date=>0.days.ago,:user_id=>@user.id)
+  @bill = Bill.new(:title=> "Lorem ipsum",:bill_date=>Time.zone.today,:user_id=>@user.id)
   @item = Item.new(:item_name=> "Lorem ipsum",:amount=>50) 
 end
 

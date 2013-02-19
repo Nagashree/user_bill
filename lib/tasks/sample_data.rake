@@ -14,7 +14,7 @@ namespace :db do
       #users.each { |user| user.bills.create!(:content=> content,:bill_date=>bill_date)}
         3.times do |k|
           item_name = "item-#{k+1}"
-          amount=rand_price(10,100)
+          amount=Integer(rand_price(10,100))
           item=Item.create!(:item_name=>item_name,:amount=>amount,:bill_id=>bill.id)
        #   bills.each { |bills|  bills.items.create(:item_name=>item_name,:amount=>amount)}
         end

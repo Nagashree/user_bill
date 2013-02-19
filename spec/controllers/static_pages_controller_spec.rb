@@ -3,7 +3,6 @@ require 'spec_helper'
 describe StaticPagesController do
 	before do
 		@user=FactoryGirl.create(:user)
-		sign_in @user
 	end
 describe "GET #home" do
   it "renders the :home view" do
@@ -13,7 +12,14 @@ describe "GET #home" do
 end
 
 describe "GET #show" do
+
+  # it "assigns the requested user to @user" do
+  #  user=FactoryGirl.create(:user)
+  #   get :show, :page => 1
+  #   assigns(:user).should eq(user)
+  # end
   it "renders the :show view" do
+    sign_in @user
     get :show
     response.should render_template :show
   end
